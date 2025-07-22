@@ -4,12 +4,25 @@ import App from "./components/App";
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  
+    <App />
 
 );
 
-//Challenge: Without moving the userIsRegistered variable,
-//1. Show Login as the button text if userIsRegistered is true.
-//Show Register as the button text if userIsRegistered is false.
-//2. Only show the Confirm Password input if userIsRegistered is false.
-//Don't show it if userIsRegistered is true.
+
+//Challenge:
+//1. Given that you can get the current time using:
+let time = new Date().toLocaleTimeString();
+console.log(time);
+//Show the latest time in the <h1> when the Get Time button
+//is pressed.
+
+//2. Given that you can get code to be called every second
+//using the setInterval method.
+//Can you get the time in your <h1> to update every second?
+
+//e.g. uncomment the code below to see Hey printed every second.
+// function sayHi() {
+//   console.log("Hey");
+// }
+// setInterval(sayHi, 1000);
