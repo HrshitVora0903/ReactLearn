@@ -1,23 +1,14 @@
 import React from "react";
-import Entry from "./Entry";
-import emojipedia from "../emojipedia";
+import Form from "./Form";
 
+var userIsRegistered = true;
 
 function App() {
   return (
-    <div>
-      <h1>
-        <span>emojipedia</span>
-      </h1>
-      <dl className="dictionary">{emojipedia.map(createEntry => (
-        <Entry
-          key={createEntry.id}
-          emoji={createEntry.emoji}
-          name={createEntry.name}
-          description={createEntry.meaning}
-        />
-      ))}
-      </dl>
+    <div className="container">
+      <Form 
+        isRegistered = {userIsRegistered}
+      />
     </div>
   );
 }
