@@ -1,33 +1,42 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 
 function App() {
 
-    const [name, setName] = useState("");
-    const [headingText, setHeading] = useState("");
+    const [fname,setFName] = useState("");
+    const [lname,setLName]= useState("");
+    const [headingText, setHeadingText]= useState("");
 
-    function handleChange(event) {
-        setName(event.target.value);
+    function handleChange(event){
+        setFName(event.target.value)
     }
 
-    function handleClick(event) {
-        setHeading(name)
+    function handleLChange(event){
+        setLName(event.target.value);
+    }     
+
+    function handleClick(event){
+        setHeadingText(`${fname} ${lname}`);
+        
 
         event.preventDefault();
     }
-    return (
-        <div className="container">
-
-            <h1>Hello {headingText} </h1>
-            <form onClick={handleClick}>
-                <input
-                    onChange={handleChange}
-                    type="text" placeholder="What's your name?"
-                    value={name}
-                />
-                <button onClick={handleClick}>Submit</button>
-            </form>
-        </div>
-    );
+  return (
+    <div className="container">
+      <h1>Hello {headingText}</h1>
+      <form onClick={handleClick}>
+        <input name="fName" placeholder="First Name" 
+            onChange={handleChange}
+            value={fname}
+        />
+        <input name="lName" placeholder="Last Name" 
+            onChange={handleLChange}
+            value={lname}
+        />
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
 export default App;
