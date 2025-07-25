@@ -1,45 +1,44 @@
 import React, { useState } from "react";
-
+import { preconnect } from "react-dom";
 
 function App() {
-  const [contact, setContact] = useState({
-    fName: "",
-    lName: "",
-    email: ""
-  });
 
-  function handleChange(event) {
-    const { value, name } = event.target;
+  const [task,setTask] = useState("");
+  const [items,setItemList] = useState([]);
 
-    setContact(prevValue => {
-      return {
-        ...prevValue,
-        [name]: value
-      }; 
-  });
 
+  function handleChange(event){
+    setTask(event.target.value);
   }
+
+  function handleClick(event){
+    setItemList( pervItems => {
+      return [...pervItems, task];
+    });
+    setTask("");
+  }
+
+
 
   return (
     <div className="container">
-      <h1>
-        Hello {contact.fName} {contact.lName}
-      </h1>
-      <p>{contact.email}</p>
-      <form>
-        <input name="fName" placeholder="First Name"
+      <div className="heading">
+        <h1>To-Do List</h1>
+      </div>
+      <div className="form">
+        <input type="text" 
           onChange={handleChange}
-          value={setContact.fName}
+          value={task}
         />
-        <input name="lName" placeholder="Last Name"
-          onChange={handleChange}
-          value={setContact.lName}
-        />
-        <input name="email" placeholder="Email"
-          onChange={handleChange}
-        />
-        <button>Submit</button>
-      </form>
+        <button onClick={handleClick}>
+          <span>Add</span>
+        </button>
+      </div>
+      <div>
+        <ul>
+         {items.map(item => <li>{item}</li> )}
+        </ul>
+      </div>
     </div>
   );
 }
