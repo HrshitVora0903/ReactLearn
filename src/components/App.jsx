@@ -1,46 +1,43 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
+
+
 function App() {
-  const [fullName, setFullName] = useState({
+  const [contact, setContact] = useState({
     fName: "",
-    lName: ""
+    lName: "",
+    email: ""
   });
 
-  function handleChange(event){
-    const newValue = event.target.value;
-    const inputName =event.target.name;
+  function handleChange(event) {
+    const { value, name } = event.target;
 
-    setFullName (preValue => {
-      if (inputName === "fName"){
-        return {
-          fName: newValue,
-          lName:preValue.lName
-        }
-      }else if( inputName === "lName"){
-        return {
-          fName: preValue.fName,
-          lName: newValue
-        }
-      }
-    });
+    setContact(prevValue => {
+      return {
+        ...prevValue,
+        [name]: value
+      }; 
+  });
 
   }
 
   return (
     <div className="container">
       <h1>
-        Hello {fullName.fName} {fullName.lName}
+        Hello {contact.fName} {contact.lName}
       </h1>
-      {/* <p>{contact.email}</p> */}
+      <p>{contact.email}</p>
       <form>
-        <input name="fName" placeholder="First Name" 
+        <input name="fName" placeholder="First Name"
           onChange={handleChange}
-          value={fullName.fName}
+          value={setContact.fName}
         />
-        <input name="lName" placeholder="Last Name" 
+        <input name="lName" placeholder="Last Name"
           onChange={handleChange}
-          value={fullName.lName}
+          value={setContact.lName}
         />
-        <input name="email" placeholder="Email" />
+        <input name="email" placeholder="Email"
+          onChange={handleChange}
+        />
         <button>Submit</button>
       </form>
     </div>
